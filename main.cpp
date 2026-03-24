@@ -12,7 +12,10 @@
 //  III. Сливает несколько диапазонов (Каждый со своими размерами) в другой отсортированный диапазон.
 //       Возвращает указатель за последний элемент в массиве с результатами c
 
+#include <exception>
 
+
+/*  ------------------------------------- 1 ---------------------------------------------------------------------------------*/
 template< class T >
 T* mergeN(const T* const* a, size_t sa, const size_t* sai, T* c)
 {
@@ -69,12 +72,14 @@ T* mergeN(const T* const* a, size_t sa, const size_t* sai, T* c)
 		ptr_head[min_id]++;
 	}
 
-	delete[] ptr_head;
+  delete[] ptr_head;
 	delete[] ptr_tail;
 
 	return (c + s);
 }
 
+
+/*----------------------------------------- 2 ----------------------------------------------------------------------------------------------------------- - */
 
 template< class T >
 T* mergeN_basic_warranty(const T* const* a, size_t sa, const size_t* sai, T* c, size_t& size)
@@ -123,7 +128,7 @@ T* mergeN_basic_warranty(const T* const* a, size_t sa, const size_t* sai, T* c, 
 				}
 			}
 
-			c[i] = *min_ptr;                                                           // Оператор копирующего присваивания (Может кидать исключения)
+			c[i] = *min_ptr;                                                       // Оператор копирующего присваивания (Может кидать исключения)
 			++size;
 			ptr_head[min_id]++;
 		}
@@ -140,6 +145,7 @@ T* mergeN_basic_warranty(const T* const* a, size_t sa, const size_t* sai, T* c, 
 
 	return (c + s);
 }
+
 
 int main()
 {}
